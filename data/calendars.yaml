@@ -1,0 +1,42 @@
+
+# Regulars patterns, they don't require calendar_dates.txt
+# [Mon, Tue, Wed, Thu, Fri, Sat, Sun]
+# [月、火、水、木、金、土、日]
+regular:
+  "毎日": [1, 1, 1, 1, 1, 1, 1]
+  "休日運休": [1, 1, 1, 1, 1, 1, 0]
+  "土曜・休日運休": [1, 1, 1, 1, 1, 0, 0]
+  "休日": [0, 0, 0, 0, 0, 0, 1]
+  "土曜・休日": [0, 0, 0, 0, 0, 1, 1]
+  "全休": [0, 0, 0, 0, 0, 0, 0]
+
+# This part is for the 2520D / 2551D on Numero Main Line
+# On sundays / weekends accordingly the section Memuro - Obihiro is canceled.
+# All section_changing calendars are recognized by
+# having operation days of 2nd version set to "区休"
+section_changing:
+  "帯広～芽室間休日運休、帯広～芽室：休日運休": ["休日運休", "休日"]
+  "芽室～帯広間土曜・休日運休、芽室～帯広：土曜・休日運休": ["土曜・休日運休", "土曜・休日"]
+
+# Other non-regular patterns, which cannot be parsed by UntenbiParser
+other:
+  "６月３０日まで運転・但し、休日と３月２２日～４月５日を除く":
+    pattern: "休日運休"
+    start: [1, 1]
+    end: [6, 30]
+    removed:
+      - [3, 22]
+      - [3, 23]
+      - [3, 24]
+      - [3, 25]
+      - [3, 26]
+      - [3, 27]
+      - [3, 28]
+      - [3, 29]
+      - [3, 30]
+      - [3, 31]
+      - [4, 1]
+      - [4, 2]
+      - [4, 3]
+      - [4, 4]
+      - [4, 5]

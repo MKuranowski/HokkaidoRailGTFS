@@ -1,0 +1,5 @@
+beautifoulsoup4
+requests
+parsec
+pyyaml
+pytz

@@ -1,0 +1,360 @@
+routes:
+  - web_down: 9840
+    web_up: 9841
+    split: true
+    split_at: "長万部"
+    route_a:
+      id: 100
+      id_station: ["函館", "森", "新函館北斗"]
+      name: "函館本線"
+      name_en: "Hakodate Main Line"
+      name_kana: "はこだてほんせん"
+      desc: "函館～長万部"
+      desc_en: "Hakodate - Oshamanbe"
+      desc_kana: "はこだて～おしゃまんべ"
+      color: "4169E1" # royalblue
+    route_b:
+      id: 101
+      id_station: ["洞爺", "伊達紋別", "東室蘭"]
+      name: "室蘭本線"
+      name_en: "Muroran Main Line"
+      name_kana: "むろらんほんせん"
+      desc: "長万部～東室蘭"
+      desc_en: "Oshamambe - Higashi-Muroran"
+      desc_kana: "おしゃまんべ～ひがしむろらん"
+      color: "4169E1" # royalblue
+
+  - web_down: 9850
+    web_up: 9851
+    split: true
+    split_at: "苫小牧"
+    route_a:
+      id: 102
+      id_station: ["東室蘭", "白老", "糸井"]
+      name: "室蘭本線"
+      name_en: "Muroran Main Line"
+      name_kana: "むろらんほんせん"
+      desc: "室蘭～東室蘭～苫小牧"
+      desc_en: "Muroran - Higashi-Muroran - Tomakomai"
+      desc_kana: "むろらん～ひがしむろらん～とまこまい"
+      color: "4169E1" # royalblue
+    route_b:
+      id: 103
+      id_station: ["新千歳空港", "千歳", "新札幌", "札幌"]
+      name: "千歳線"
+      name_en: "Chitose Line"
+      name_kana: "ちとせせん"
+      desc: "苫小牧・新千歳空港～札幌"
+      desc_en: "Tomakomai / New Chitose Airport - Sapporo"
+      desc_kana: "とまこまい・しんちとせくうこう～さっぽろ"
+      color: "4169E1" # royalblue
+
+  - web_down: 2820
+    web_up: 2821
+    split: true
+    split_at: "札幌"
+    route_a:
+      id: 104
+      id_station: ["手稲", "ほしみ", "小樽"]
+      name: "函館本線"
+      name_en: "Hakodate Main Line"
+      name_kana: "はこだてほんせん"
+      desc: "小樽～札幌"
+      desc_en: "Otaru - Sapporo"
+      desc_kana: "おたる～さっぽろ"
+      color: "FF0000" # red
+    route_b:
+      id: 105
+      id_station: ["白石", "岩見沢", "滝川", "旭川"]
+      name: "函館本線"
+      name_en: "Hakodate Main Line"
+      name_kana: "はこだてほんせん"
+      desc: "札幌～旭川"
+      desc_en: "Sapporo - Asahikawa"
+      desc_kana: "さっぽろ～あさひかわ"
+      color: "FFA500" # orange
+
+  - web_down: 2850
+    web_up: 2851
+    exclude: ["札幌"]
+    split: false
+    id: 106
+    name: "函館本線"
+    name_en: "Hakodate Main Line"
+    name_kana: "はこだてほんせん"
+    desc: "長万部～小樽"
+    desc_en: "Oshamambe - Otaru"
+    desc_kana: "おしゃまんべ～おたる"
+    color: "ff0000" # red
+
+  - web_down: 9720
+    web_up: 9721
+    exclude: ["札幌", "新札幌", "千歳"]
+    split: true
+    split_at: "新得"
+    route_a:
+      id: 108
+      id_station: ["南千歳", "追分", "新夕張"]
+      name: "石勝線"
+      name_en: "Sekishō Line"
+      name_kana: "せきしょうせん"
+      desc: "南千歳～新得"
+      desc_en: "Minami-Chitose - Shintoku"
+      desc_kana: "みなみちとせ～しんとく"
+      color: "94CD32" # yellowgreen
+    route_b:
+      id: 109
+      id_station: ["帯広", "池田", "釧路"]
+      name: "根室本線"
+      name_en: "Nemuro Main Line"
+      name_kana: "ねむろほんせん"
+      desc: "新得～帯広～池田～釧路"
+      desc_en: "Shintoku - Obihiro - Ikeda - Kushiro"
+      desc_kana: "しんとく～おびひろ～いけだ～くしろ"
+      color: "94CD32" # yellowgreen
+
+  - web_down: 2900
+    web_up: 2901
+    split: false
+    id: 110
+    name: "根室本線"
+    name_en: "Nemuro Main Line"
+    name_kana: "ねむろほんせｎ"
+    desc: "滝川～富良野～新得"
+    desc_en: "Takikawa - Furano - Shintoku"
+    desc_kana: "たきかわ～ふらの～しんとく"
+    color: "FFB6C1" # lightpink
+
+  - web_down: 2930
+    web_up: 2931
+    split: false
+    id: 115
+    name: "根室本線"
+    name_en: "Nemuro Main Line"
+    name_kana: "ねむろほんせん"
+    desc: "釧路～根室"
+    desc_en: "Kushiro - Nemuro"
+    desc_kana: "くしろ～ねむろ"
+    color: "808080" # grey
+
+  - web_down: 9860
+    web_up: 9861
+    split: false
+    id: 107
+    name: "石北本線"
+    name_en: "Sekihoku Main Line"
+    name_kana: "せきほくほんせん"
+    desc: "旭川～遠軽～網走"
+    desc_en: "Asahikawa - Engaru - Abashiri"
+    desc_kana: "あさきはわ～えんがる～あばしり"
+    color: "FFA500" # orange
+
+  - web_down: 9870
+    web_up: 9871
+    split: false
+    id: 111
+    name: "釧網本線"
+    name_en: "Senmō Main Line"
+    name_kana: "せんもうほんせん"
+    desc: "網走～釧路"
+    desc_en: "Abashiri - Kushiro"
+    desc_kana: "あばしり～くしろ"
+    color: "FF69B4" # hotpink
+
+  - web_down: 2890
+    web_up: 2891
+    split: false
+    id: 112
+    name: "宗谷本線"
+    name_en: "Sōya Main Line"
+    name_kana: "そうやほんせん"
+    desc: "旭川～名寄～稚内"
+    desc_en: "Asahikawa - Nayoro - Wakkanai"
+    desc_kana: "あさひかわ～なよろ～わっかない"
+    color: "A52A2A" # brown
+
+  - web_down: 2840
+    web_up: 2841
+    split: false
+    id: 116
+    name: "室蘭本線"
+    name_en: "Muroran Main Line"
+    name_kana: "むろらんほんせん"
+    desc: "苫小牧～岩見沢"
+    desc_en: "Tomakomai - Iwamizawa"
+    desc_kana: "とまこまい～いわみざわ"
+    color: "808080" # grey
+
+  - web_down: 2860
+    web_up: 2861
+    split: false
+    id: 113
+    name: "学園都市線"
+    name_en: "Gakuentoshi Line"
+    name_kana: "がくえんとしせん"
+    desc: "札幌～石狩当別～新十津川"
+    desc_en: "Sapporo - Ishikari-Tōbetsu - Shin-Totsukawa"
+    desc_kana: "さっぽろ～いしかちとうべつ～しんとつかわ"
+    color: "2E8B57" # seagreen
+
+  - web_down: 2880
+    web_up: 2881
+    split: false
+    id: 114
+    name: "富良野線"
+    name_en: "Furano Line"
+    name_kana: "ふらのせん"
+    desc: "旭川～美瑛～富良野"
+    desc_en: "Asahikawa - Biei - Furano"
+    desc_kana: "あさひかわ～びえい～ふらの"
+    color: "9370DB" # mediumpurple
+
+  - web_down: 2830
+    web_up: 2831
+    split: false
+    id: 117
+    name: "日高本線"
+    name_en: "Hidaka Main Line"
+    name_kana: "ひだかほんせん"
+    desc: "苫小牧～静内～様似"
+    desc_en: "Tomakomai - Shizunai - Samani"
+    desc_kana: "とまこまい～しずない～さまに"
+    color: "808080" # grey
+
+  - web_down: 2870
+    web_up: 2871
+    split: false
+    id: 118
+    name: "留萌本線"
+    name_en: "Rumoi Main Line"
+    name_kana: "るもいほんせｎ"
+    desc: "深川～留萌"
+    desc_en: "Fukagawa - Rumoi"
+    desc_kana: "ふかがわ～るもい"
+    color: "808080" # grey
+
+  - web_down: 2970
+    web_up: 2971
+    split: false
+    id: 119
+    agency: "3430001067100"
+    name: "道南いさりび鉄道"
+    name_en: "South Hokkaido Railway"
+    name_kana: "どうなんいさりびてつどう"
+    desc: "函館～木古内"
+    desc_en: "Hakodate - Kikonai"
+    desc_kana: "はこだて～きこない"
+    color: "000000" # black
+
+expresses:
+  web_down: [110, 130, 150, 670]
+  web_up: [111, 131, 151, 671]
+  trains:
+    # Sapporo - Asahikawa - Abashiri: orange
+    - web_names: ["ライラック", "ライラック旭山動物園号"]
+      id: 301
+      name: "ライラック"
+      name_en: "Lilac"
+      name_kana: "らいらっく"
+      desc: "【特急】札幌～旭川"
+      desc_en: "[Limited Express] Sapporo - Asahikawa"
+      desc_kana: "【とっきゅう】さっぽろ～あさひかわ"
+      color: "FFA500"
+    - web_names: ["カムイ"]
+      id: 302
+      name: "カムイ"
+      name_en: "Kamui"
+      name_kana: "かむい"
+      desc: "【特急】札幌～旭川"
+      desc_en: "[Limited Express] Sapporo - Asahikawa"
+      desc_kana: "【とっきゅう】さっぽろ～あさひかわ"
+      color: "FFA500"
+    - web_names: ["オホーツク"]
+      id: 303
+      name: "オホーツク"
+      name_en: "Okhotsk"
+      name_kana: "おほーつく"
+      desc: "【特急】札幌～旭川～網走"
+      desc_en: "[Limited Express] Sapporo - Asahikawa - Abashiri"
+      desc_kana: "【とっきゅう】さっぽろ～あさひかわ～あばしり"
+      color: "FFA500"
+    - web_names: ["大雪"]
+      id: 304
+      name: "大雪"
+      name_en: "Taisetsu"
+      name_kana: "たいせつ"
+      desc: "【特急】旭川～網走"
+      desc_en: "[Limited Express] Asahikawa - Abashiri"
+      desc_kana: "【とっきゅう】あさひかわ～あばしり"
+      color: "FFA500"
+
+    # Sapporo - Asahikawa - Wakkanai: brown
+    - web_names: ["宗谷"]
+      id: 305
+      name: "宗谷"
+      name_en: "Sōya"
+      name_kana: "そうや"
+      desc: "【特急】札幌～旭川～稚内"
+      desc_en: "[Limited Express] Sapporo - Asahikawa - Wakkanai"
+      desc_kana: "【とっきゅう】さっぽろ～あさひかわ～わっかない"
+      color: "A52A2A"
+    - web_names: ["サロベツ"]
+      id: 306
+      name: "サロベツ"
+      name_en: "Sarobetsu"
+      name_kana: "さろべつ"
+      desc: "【特急】旭川～稚内"
+      desc_en: "[Limited Express] Asahikawa - Wakkanai"
+      desc_kana: "【とっきゅう】あさひかわ～わっかない"
+      color: "A52A2A"
+
+    # Sapporo - Obihiro - Kushiro: yellowgreen
+    - web_names: ["おおぞら"]
+      id: 307
+      name: "おおぞら"
+      name_en: "Ōzora"
+      name_kana: "おおぞら"
+      desc: "【特急】札幌～帯広～釧路"
+      desc_en: "[Limited Express] Sapporo - Obihiro - Kushiro"
+      desc_kana: "【とっきゅう】さっぽろ～おびひろ～くしろ"
+      color: "9ACD32"
+    - web_names: ["とかち"]
+      id: 308
+      name: "とかち"
+      name_en: "Tokachi"
+      name_kana: "とかち"
+      desc: "【特急】札幌～帯広"
+      desc_en: "[Limited Express] Sapporo - Obihiro"
+      desc_kana: "【とっきゅう】さっぽろ～おびひろ"
+      color: "9ACD32"
+
+    # Sapporo - Higashi-Muroran - Hakodate: royalblue
+    - web_names: ["北斗"]
+      id: 309
+      name: "北斗"
+      name_en: "Hokuto"
+      name_kana: "ほくと"
+      desc: "【特急】札幌～東室蘭～函館"
+      desc_en: "[Limited Express] Sapporo - Higashi-Muroran - Hakodate"
+      desc_kana: "【とっきゅう】さっぽろ～ひがしむろらん～はこだて"
+      color: "4169E1"
+    - web_names: ["すずらん"]
+      id: 310
+      name: "すずらん"
+      name_en: "Suzuran"
+      name_kana: "すずらん"
+      desc: "【特急】札幌～東室蘭"
+      desc_en: "[Limited Express] Sapporo - Higashi-Muroran"
+      desc_kana: "【とっきゅう】さっぽろ～ひがしむろらん"
+      color: "4169E1"
+
+    # Lavender Express
+    - web_names: ["フラノラベンダーエクスプレス"]
+      id: 311
+      name: "フラノラベンダーエクスプレス"
+      name_en: "Furano Lavender Express"
+      name_kana: "ふらのらべんだーえくすぷれす"
+      desc: "【特急】札幌～富良野"
+      desc_en: "[Limited Express] Sapporo - Furano"
+      desc_kana: "【とっきゅう】さっぽろ～ふらの"
+      color: "FFB6C1"
