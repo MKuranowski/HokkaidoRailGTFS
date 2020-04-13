@@ -33,8 +33,8 @@ Route colors are based on <https://www.jrhokkaido.co.jp/global/pdf/e-route_map.p
 
 
 | Line Name                          | JR Code | GTFS ID | Color | Color Example                            |
-|=========================================|====|=====|=========|============================================|
-| Hakodate Main Line (Hakodate~Oshamambe) | H  | 100 | #4169E1 | <span style="color:royalblue;">■</span>    |
+|-----------------------------------------|----|-----|---------|--------------------------------------------|
+| Hakodate Main Line (Hakodate~Oshamambe) | H  | 100 | #4169E1 | <span style="color: royalblue;">■</span>   |
 | Muroran Main Line (Oshamambe~H-Muroran) | H  | 101 | #4169E1 | <span style="color:royalblue;">■</span>    |
 | Muroran Main Line (H-Muroran~Tomakomai) | H  | 102 | #4169E1 | <span style="color:royalblue;">■</span>    |
 | Chitose Line                            | H  | 103 | #4169E1 | <span style="color:royalblue;">■</span>    |
