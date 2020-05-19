@@ -185,16 +185,16 @@ routes:
     desc_kana: "とまこまい～いわみざわ"
     color: "808080" # grey
 
-  - web_down: 2860
-    web_up: 2861
+  - web_down: 9990
+    web_up: 9991
     split: false
     id: 113
     name: "学園都市線"
     name_en: "Gakuentoshi Line"
     name_kana: "がくえんとしせん"
-    desc: "札幌～石狩当別～新十津川"
-    desc_en: "Sapporo - Ishikari-Tōbetsu - Shin-Totsukawa"
-    desc_kana: "さっぽろ～いしかちとうべつ～しんとつかわ"
+    desc: "札幌～石狩当別～北海道医療大学"
+    desc_en: "Sapporo - Ishikari-Tōbetsu - Hokkaidō-Iryōdaigaku"
+    desc_kana: "さっぽろ～いしかちとうべつ～ほっかいどういりょうだいがく"
     color: "2E8B57" # seagreen
 
   - web_down: 2880
