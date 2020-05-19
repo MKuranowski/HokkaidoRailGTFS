@@ -42,10 +42,16 @@ def load_holidays(start, end):
     """
     holidays = set()
 
-    req = requests.get("https://www8.cao.go.jp/chosei/shukujitsu/syukujitsu.csv")
-    req.raise_for_status()
-    req.encoding = "shift-jis"
+    try:
+        req = requests.get("https://www8.cao.go.jp/chosei/shukujitsu/syukujitsu.csv")
+        req.raise_for_status()
+    except requests.exceptions.SSLError:
+        print("! Connection to cao.go.jp raised an SSL Error")
+        print("! Fetching a copy of holidays CSV file from mkuran.pl", end="\n\n")
+        req = requests.get("https://mkuran.pl/moovit/japan-cao-shukujitsu.csv")
+        req.raise_for_status()
 
+    req.encoding = "shift-jis"
     buffer = io.StringIO(req.text)
     reader = csv.DictReader(buffer)
 
