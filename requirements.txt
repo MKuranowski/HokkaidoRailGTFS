@@ -1,4 +1,4 @@
-beautifoulsoup4
+beautifulsoup4
 requests
 parsec
 pyyaml
