@@ -433,6 +433,16 @@ class HokkaidoRailGTFS:
         print(STR_1UP + f"Parsing timetable {ttable_id}")
         soup = BeautifulSoup(req.text, "html.parser")
 
+        # Lavender Express may have no trains
+        error = soup.find("div", class_="error-message")
+        error = error.get_text() if error else None
+
+        if ttable_id in {670, 671} and "(E013)" in error:
+            return []
+
+        elif error:
+            raise ValueError(f"website returned an error: {error}")
+
         # First, header
         row_data = self.parse_web_ekidori(soup.find("div", id="ekidoriHeader"))
         trains = self.parse_web_timeheader(soup.find("div", id="timeHeader"), row_data, dir_id)

@@ -19,6 +19,12 @@ max_days_in_month = {
     7: 31, 8: 31, 9: 30, 10: 31, 11: 30, 12: 31,
 }
 
+def day_plus_one(day):
+    if (day[1] + 1) > max_days_in_month[day[0]]:
+        return ((day[0] + 1) % 12, 1)
+    else:
+        return (day[0], day[1] + 1)
+
 # === DAYS AND RANGES === #
 
 number = parsec.regex(r"[０-９0-9]{1,2}")
@@ -107,11 +113,7 @@ def flatten_multiple_dates(multi_days):
             while current_day <= end:
                 flat_dates.append(current_day)
 
-                # Month roll-over
-                if (current_day[1] + 1) > max_days_in_month[current_day[0]]:
-                    current_day = ((current_day[0] + 1) % 12, 1)
-                else:
-                    current_day = (current_day[0], current_day[1] + 1)
+                current_day = day_plus_one(current_day)
 
     return flat_dates
 
@@ -119,7 +121,11 @@ def flatten_multiple_dates(multi_days):
 
 rule_type_translations = {
     "から運転": "start_date",
+    "からは運転": "start_date",
     "まで運転": "end_date",
+    "までは運転": "end_date",
+    "まで運休": "start_date_plus1",
+    "までは運休": "start_date_plus1",
     "運転": "added",
     "運休": "removed",
 }
@@ -129,7 +135,12 @@ rule_type_translations = {
 @parsec.generate
 def single_day_rule():
     date = yield single_day_def
-    rule_type = yield (parsec.string("から運転") ^ parsec.string("まで運転"))
+    rule_type = yield (parsec.string("から運転")
+                       ^ parsec.string("からは運転")
+                       ^ parsec.string("まで運転")
+                       ^ parsec.string("までは運転")
+                       ^ parsec.string("まで運休")
+                       ^ parsec.string("までは運休"))
 
     if date["day"][0] is None:
         raise ValueError("month definition is required in から運転・まで運転 rules")
@@ -181,8 +192,11 @@ def parse_untenbi():
     # Interpret each rule
     for raw_rule in raw_rules:
 
-        if raw_rule["rule"] == "start_date":
-            result["start"] = raw_rule["day"]
+        if raw_rule["rule"] in {"start_date", "start_date_plus1"}:
+            if raw_rule["rule"] == "start_date_plus1":
+                result["start"] = day_plus_one(raw_rule["day"])
+            else:
+                result["start"] = raw_rule["day"]
 
             if "end" not in result:
                 result["end"] = (12, 31)
