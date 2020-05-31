@@ -1,6 +1,7 @@
 import xml.etree.ElementTree as etree
 from datetime import date, datetime, timedelta
 from collections import OrderedDict
+from parsec import ParseError
 from bs4 import BeautifulSoup
 from itertools import chain
 from warnings import warn
@@ -548,6 +549,53 @@ class HokkaidoRailGTFS:
             if "added" in values:
                 self.calendar_data["other"][desc]["added"] = {tuple(i) for i in values["added"]}
 
+    def process_calendar_data(self):
+        """Process calendar data and return some rules that
+        can be used to create GTFS calendar data.
+        """
+        service_infos = []
+        incorrect_services = []
+
+        for service_desc, service_id in self.services.items():
+            service_data, pattern_days = None, None
+
+            try:
+                # Load service pattern
+                if service_desc in self.calendar_data["regular"]:
+                    print(STR_1UP + f"parsing regular calendar: {service_desc}")
+
+                    service_data = {}
+                    pattern_days = self.calendar_data["regular"][service_desc]
+
+                elif service_desc in self.calendar_data["other"]:
+                    print(STR_1UP + f"parsing calendar manually described: {service_desc}")
+
+                    service_data = self.calendar_data["other"][service_desc]
+                    pattern_days = self.calendar_data["regular"][service_data["pattern"]]
+
+                else:
+                    print(STR_1UP + f"parsing untenbi-parsed calendar: {service_desc} "
+                                    f"(id: {service_id})")
+                    service_data = parse_untenbi.parse(service_desc)
+                    pattern_days = self.calendar_data["regular"][service_data["pattern"]]
+
+                service_infos.append(
+                    (service_id, service_desc, service_data, pattern_days)
+                )
+
+            except (KeyError, ParseError):
+
+                incorrect_services.append((service_id, service_desc))
+
+        if incorrect_services:
+            print("! invalid services found:")
+            for service_id, service_desc in incorrect_services:
+                print(service_desc + " (id: " + str(service_id) + ")")
+
+            raise ValueError("unable to understand some services!")
+
+        return service_infos
+
     def calendars(self):
         """Parse all used calendars and save them to calendar_dates.txt
         """
@@ -563,29 +611,13 @@ class HokkaidoRailGTFS:
             start = date.today()
             end = start + timedelta(days=365)
 
+            service_infos = self.process_calendar_data()
+
             print(STR_1UP + "requesting list of holidays")
             holidays = load_holidays(start, end)
 
-            for service_desc, service_id in self.services.items():
-
-                # Load service pattern
-                if service_desc in self.calendar_data["regular"]:
-                    print(STR_1UP + f"saving regular calendar: {service_desc}")
-
-                    service_data = {}
-                    pattern_days = self.calendar_data["regular"][service_desc]
-
-                elif service_desc in self.calendar_data["other"]:
-                    print(STR_1UP + f"saving calendar manually described: {service_desc}")
-
-                    service_data = self.calendar_data["other"][service_desc]
-                    pattern_days = self.calendar_data["regular"][service_data["pattern"]]
-
-                else:
-                    print(STR_1UP + f"saving untenbi-parsed calendar: {service_desc}")
-                    service_data = parse_untenbi.parse(service_desc)
-                    pattern_days = self.calendar_data["regular"][service_data["pattern"]]
-
+            print(STR_1UP + "dumping calendar data")
+            for service_id, service_desc, service_data, pattern_days in service_infos:
                 # Iterate over valid day
                 current_day = start
 
