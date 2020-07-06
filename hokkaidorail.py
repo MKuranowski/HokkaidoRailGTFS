@@ -18,7 +18,12 @@ from untenbiparser import parse_untenbi
 
 OUTPUT_SERVICE_DESC = False
 DEFAULT_AGENCY = "4430001022657"
+
 STR_1UP = "\033[1A\033[K"
+STR_RED = "\033[31m"
+STR_YELLOW = "\033[33m"
+STR_RESET = "\033[0m"
+STR_WARN = STR_RED + "Warning! " + STR_YELLOW
 
 # HELPING FUNCTIONS #
 
@@ -436,7 +441,7 @@ class HokkaidoRailGTFS:
 
         # Lavender Express may have no trains
         error = soup.find("div", class_="error-message")
-        error = error.get_text() if error else None
+        error = error.get_text() if error else ""
 
         if ttable_id in {670, 671} and "(E013)" in error:
             return []
@@ -747,8 +752,17 @@ class HokkaidoRailGTFS:
         and return the trip_headsign.
         Headsign translations are also handled.
         """
-        type_en, type_kana = self.type_translation[train_type]
-        name_en, name_kana = self.type_translation[train_name]
+        try:
+            type_en, type_kana = self.type_translation[train_type]
+        except KeyError:
+            warn(STR_WARN + f"Missing translation for train type {train_type!r}" + STR_RESET)
+            type_en, type_kana = "", ""
+
+        try:
+            name_en, name_kana = self.type_translation[train_name]
+        except KeyError:
+            warn(STR_WARN + f"Missing translation for train name {train_name!r}" + STR_RESET)
+            name_en, name_kana = "", ""
 
         dest_en = self.to_english[dest]
         dest_kana = self.to_kana[dest]
