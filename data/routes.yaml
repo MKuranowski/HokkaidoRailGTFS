@@ -185,8 +185,8 @@ routes:
     desc_kana: "とまこまい～いわみざわ"
     color: "808080" # grey
 
-  - web_down: 9990
-    web_up: 9991
+  - web_down: 2860
+    web_up: 2861
     split: false
     id: 113
     name: "学園都市線"
@@ -247,8 +247,8 @@ routes:
     color: "000000" # black
 
 expresses:
-  web_down: [110, 130, 150, 670]
-  web_up: [111, 131, 151, 671]
+  web_down: [110, 130, 150, 670, 680]
+  web_up: [111, 131, 151, 671, 681]
   trains:
     # Sapporo - Asahikawa - Abashiri: orange
     - web_names: ["ライラック", "ライラック旭山動物園号"]
@@ -346,6 +346,15 @@ expresses:
       desc: "【特急】札幌～東室蘭"
       desc_en: "[Limited Express] Sapporo - Higashi-Muroran"
       desc_kana: "【とっきゅう】さっぽろ～ひがしむろらん"
+      color: "4169E1"
+    - web_names: ["ニセコ号"]
+      id: 312
+      name: "ニセコ号"
+      name_en: "Niseko"
+      name_kana: "にせこごう"
+      desc: "【特急】札幌〜ニセコ〜函館"
+      desc_en: "[Limited Express] Sapporo - Niseko - Hakodate"
+      desc_kana: "【とっきゅう】さっぽろ〜にせこ〜はこだて"
       color: "4169E1"
 
     # Lavender Express
