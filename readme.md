@@ -68,3 +68,7 @@ Route colors are based on <https://www.jrhokkaido.co.jp/global/pdf/e-route_map.p
 | Furano Lavender Express                 | T  | 311 | #FFB6C1 | <span style="color:lightpink;">■</span>    |
 | Niseko                                  | H  | 312 | #4169E1 | <span style="color:royalblue;">■</span>    |
 
+
+## License
+HokkaidoRailGTFS is reeleeased under the MIT License.
+For full text see the `license.md` file.

@@ -16,6 +16,15 @@ import re
 
 from untenbiparser import parse_untenbi
 
+# Meta
+
+__title__ = "HokkaidoRailGTFS"
+__author__ = "Mikołaj Kuranowski"
+__license__ = "MIT"
+__email__ = "mikolaj [аt] mkuran.pl"
+
+# Constants
+
 OUTPUT_SERVICE_DESC = False
 DEFAULT_AGENCY = "4430001022657"
 
