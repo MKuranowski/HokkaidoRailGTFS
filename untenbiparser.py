@@ -19,11 +19,26 @@ max_days_in_month = {
     7: 31, 8: 31, 9: 30, 10: 31, 11: 30, 12: 31,
 }
 
+
 def day_plus_one(day):
     if (day[1] + 1) > max_days_in_month[day[0]]:
         return ((day[0] + 1) % 12, 1)
     else:
         return (day[0], day[1] + 1)
+
+
+def day_minus_one(day):
+    m, d = day
+    d -= 1
+
+    if d <= 0:
+        m -= 1
+        if m <= 0:
+            m = 12
+        return (m, max_days_in_month[m])
+    else:
+        return (m, d)
+
 
 # === DAYS AND RANGES === #
 
@@ -122,6 +137,7 @@ def flatten_multiple_dates(multi_days):
 rule_type_translations = {
     "から運転": "start_date",
     "からは運転": "start_date",
+    "からは運休": "end_date_minus1",
     "まで運転": "end_date",
     "までは運転": "end_date",
     "まで運休": "start_date_plus1",
@@ -137,6 +153,7 @@ def single_day_rule():
     date = yield single_day_def
     rule_type = yield (parsec.string("から運転")
                        ^ parsec.string("からは運転")
+                       ^ parsec.string("からは運休")
                        ^ parsec.string("まで運転")
                        ^ parsec.string("までは運転")
                        ^ parsec.string("まで運休")
@@ -204,8 +221,11 @@ def parse_untenbi():
             if "pattern" not in result:
                 result["pattern"] = "毎日"
 
-        elif raw_rule["rule"] == "end_date":
-            result["end"] = raw_rule["day"]
+        elif raw_rule["rule"] in {"end_date", "end_date_minus1"}:
+            if raw_rule["rule"] == "end_date_minus1":
+                result["end"] = day_minus_one(raw_rule["day"])
+            else:
+                result["end"] = raw_rule["day"]
 
             if "start" not in result:
                 result["start"] = (1, 1)

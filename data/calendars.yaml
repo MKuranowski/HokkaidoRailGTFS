@@ -4,6 +4,7 @@
 # [月、火、水、木、金、土、日]
 regular:
   "毎日": [1, 1, 1, 1, 1, 1, 1]
+  "水・木曜運休": [1, 1, 0, 0, 1, 1, 1]
   "休日運休": [1, 1, 1, 1, 1, 1, 0]
   "土曜・休日運休": [1, 1, 1, 1, 1, 0, 0]
   "休日": [0, 0, 0, 0, 0, 0, 1]
@@ -11,16 +12,60 @@ regular:
   "土曜・休日運転": [0, 0, 0, 0, 0, 1, 1]
   "全休": [0, 0, 0, 0, 0, 0, 0]
 
-# This part is for the 2520D / 2551D on Numero Main Line
-# On sundays / weekends accordingly the section Memuro - Obihiro is canceled.
-# All section_changing calendars are recognized by
-# having operation days of 2nd version set to "区休"
+# This part is for handling weird "区休" service.
+# A "区休" service denotes that this is just a different "version" of the previous train.
+# This config section maps the "運転日" value of previous train
+# to actual calendars. First value for the 'normal' (previous train), second value
+# is for the changed (区休) train.
 section_changing:
   "帯広～芽室間休日運休、帯広～芽室：休日運休": ["休日運休", "休日"]
   "芽室～帯広間土曜・休日運休、芽室～帯広：土曜・休日運休": ["土曜・休日運休", "土曜・休日"]
+  "全日運転。札幌～手稲：８月５日からは運休": ["８月４日まで運転日", "８月５日から運転日"]
+  "全日運転。ほしみ～手稲：土曜・休日運休": ["土曜・休日運休", "土曜・休日運転"]
+  "全日運転。札幌～岩見沢：８月５日からは運休": ["８月４日まで運転日", "８月５日から運転日"]
+  "全日運転。札幌～小樽：８月５日からは運休": ["８月４日まで運転日", "８月５日から運転日"]
+  "全日運転。帯広～芽室：休日運休": ["休日運休", "休日"]
+  "全日運転。遠軽～上川：９月２７～３０日は運休": ["９月２７～３０日は運休", "９月２７～３０日は運転"]
 
 # Other non-regular patterns, which cannot be parsed by UntenbiParser
 other:
+  "全日運転。７月２２日からの土曜・休日は運休":
+    # !!! It's past 22nd July as I wrote this, so to keep it simple
+    # just mapping this as non-weekend service.
+    pattern: "土曜・休日運休"
+
+  "全日運転。上川～遠軽：９月２７～３０日は運休":
+    # !!! Also broken, This should be a "区休" service, but there's
+    # bus replacement section in between, and the 2 parts are a "時変",
+    # and I can't be bothered to parse this correctly for this one pair of trains.
+    pattern: "毎日"
+
+  "全日運転。遠軽～上川：９月２７～３０日は運休":
+    # See comment above
+    pattern: "毎日"
+
+  "９月２６日までの土曜・休日運転":
+    pattern: "土曜・休日"
+    end: [9, 26]
+
+  "８月９日までの土曜・休日運転":
+    pattern: "土曜・休日"
+    end: [8, 9]
+
+  "８月１４日～９月２０日の土曜・休日運転":
+    pattern: "土曜・休日"
+    start: [8, 14]
+    end: [9, 20]
+
+  "９月２０日までの土曜・休日運転":
+    pattern: "土曜・休日"
+    end: [9, 20]
+
+  "全日運転。７月２１日と７月２８日からの水・木曜は運休":
+    # !!! It's past 28th July as I wrote this, so to keep it simple
+    # just mapping this as non-wed-thu-serivce
+    pattern: "水・木曜運休"
+
   "６月３０日まで運転・但し、休日と３月２２日～４月５日を除く":
     pattern: "休日運休"
     start: [1, 1]

@@ -11571,6 +11571,46 @@
   <node id='-210747' action='modify' visible='true' lat='44.020440711' lon='144.25894259334' />
   <node id='-210748' action='modify' visible='true' lat='44.02036356075' lon='144.25759075999' />
   <node id='-210749' action='modify' visible='true' lat='44.02013210942' lon='144.25570248485' />
+  <node id='-210763' action='modify' visible='true' lat='43.84922939911' lon='142.76667415559'>
+    <tag k='highway' v='bus_stop' />
+    <tag k='id' v='20715' />
+    <tag k='name' v='上川' />
+    <tag k='name:en' v='Kamikawa' />
+    <tag k='name:ja_kana' v='かみかわ' />
+    <tag k='ref' v='A43' />
+  </node>
+  <node id='-210788' action='modify' visible='true' lat='43.88440036193' lon='143.18194448411'>
+    <tag k='highway' v='bus_stop' />
+    <tag k='id' v='20716' />
+    <tag k='name' v='白滝' />
+    <tag k='name:en' v='Shirataki' />
+    <tag k='name:ja_kana' v='しらたき' />
+    <tag k='ref' v='A45' />
+  </node>
+  <node id='-210813' action='modify' visible='true' lat='44.00621057335' lon='143.33708077401'>
+    <tag k='highway' v='bus_stop' />
+    <tag k='id' v='20717' />
+    <tag k='name' v='丸瀬布' />
+    <tag k='name:en' v='Maruseppu' />
+    <tag k='name:ja_kana' v='まるせっぷ' />
+    <tag k='ref' v='A48' />
+  </node>
+  <node id='-210839' action='modify' visible='true' lat='44.0100245161' lon='143.42188953817'>
+    <tag k='highway' v='bus_stop' />
+    <tag k='id' v='20718' />
+    <tag k='name' v='瀬戸瀬' />
+    <tag k='name:en' v='Setose' />
+    <tag k='name:ja_kana' v='せとせ' />
+    <tag k='ref' v='A49' />
+  </node>
+  <node id='-210863' action='modify' visible='true' lat='44.0599669953' lon='143.52094888419'>
+    <tag k='highway' v='bus_stop' />
+    <tag k='id' v='20719' />
+    <tag k='name' v='遠軽' />
+    <tag k='name:en' v='Engaru' />
+    <tag k='name:ja_kana' v='えんがる' />
+    <tag k='ref' v='A50' />
+  </node>
   <node id='6036542398' action='delete' timestamp='2018-11-04T12:28:38Z' uid='1384396' user='Natsuyasumi' visible='true' version='1' changeset='64164742' lat='43.03386524675' lon='141.33735050552'>
     <tag k='direction' v='inner' />
     <tag k='name' v='ロープウェイ入口' />
